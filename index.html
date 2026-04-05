@@ -175,70 +175,91 @@
             </div>
         </section>
 
-        <!-- AUTO-UPDATING NEWS SECTION -->
-        <section id="news">
-            <h2>Latest News from Reliable Sources</h2>
-            <div class="card">
-                <p><strong>Auto-updated</strong> from BBC News (filtered for Ukraine-related stories). Refreshes every time you visit.</p>
-                <ul id="news-list" class="news-list">
-                    <li>Loading latest news...</li>
-                </ul>
-                <p style="font-size:0.9em; color:#666; margin-top:20px;">
-                    Note: This pulls publicly available headlines. For deeper analysis, visit the <a href="https://understandingwar.org/" target="_blank">Institute for the Study of War</a>.
-                </p>
-            </div>
-        </section>
+ <!-- AUTO-UPDATING NEWS SECTION -->
+<section id="news">
+    <h2>Latest News from Reliable Sources</h2>
+    <div class="card">
+        <h3>Auto-Updated Headlines (BBC News)</h3>
+        <p style="margin-bottom:20px; font-size:0.95em;">
+            Automatically pulls recent stories mentioning Ukraine from BBC, AP news, Kyiv Post, UNITED24 and Ukrainska Pravda. Refreshes on every page visit.
+        </p>
+        <ul id="news-list" class="news-list" style="padding-left:20px; margin-bottom:35px;">
+            <li>Loading latest news from BBC...</li>
+        </ul>
 
+        <h3 style="margin-top:30px; color:var(--blue);">Direct Links to Verified Sources</h3>
+        <p style="font-size:0.95em; margin-bottom:20px;">
+            Go straight to the latest coverage from trusted Ukrainian and international outlets:
+        </p>
+        <ul style="padding-left:20px; line-height:2.0;">
+            <li><strong>BBC News – Ukraine Coverage</strong>: 
+                <a href="https://www.bbc.com/news/topics/cvenzmgyg1nt" target="_blank" rel="noopener">bbc.com/news/topics/cvenzmgyg1nt</a>
+            </li>
+            <li><strong>Kyiv Post</strong> (English, independent Ukrainian media): 
+                <a href="https://www.kyivpost.com/" target="_blank" rel="noopener">kyivpost.com</a>
+            </li>
+            <li><strong>Ukrainska Pravda</strong> (English edition): 
+                <a href="https://www.pravda.com.ua/eng/" target="_blank" rel="noopener">pravda.com.ua/eng</a>
+            </li>
+            <li><strong>Associated Press (AP) – Russia-Ukraine War</strong>: 
+                <a href="https://apnews.com/hub/russia-ukraine" target="_blank" rel="noopener">apnews.com/hub/russia-ukraine</a>
+            </li>
+            <li><strong>UNITED24 Official Updates</strong> (Ukrainian government initiative): 
+                <a href="https://u24.gov.ua/" target="_blank" rel="noopener">u24.gov.ua</a> 
+                &nbsp; | &nbsp; 
+                <a href="https://united24media.com/" target="_blank" rel="noopener">united24media.com</a>
+            </li>
+        </ul>
+
+        <p style="font-size:0.88em; color:#666; margin-top:25px;">
+            <strong>Note:</strong> The auto-updated list comes from BBC. The direct links above take you to the official pages of each source for the most current reporting.
+        </p>
     </div>
+</section>
 
-    <footer>
-        <p>This is an independent informational website • Last updated: April 2026</p>
-    </footer>
+<script>
+    const newsList = document.getElementById('news-list');
 
-    <!-- The JavaScript goes just before </body> -->
-    <script>
-        const newsList = document.getElementById('news-list');
+    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://feeds.bbci.co.uk/news/world/europe/rss.xml')}`)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
+        const items = xmlDoc.querySelectorAll('item');
 
-        fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://feeds.bbci.co.uk/news/world/europe/rss.xml')}`)
-          .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
-          })
-          .then(data => {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
-            const items = xmlDoc.querySelectorAll('item');
+        let ukraineNews = [];
 
-            let ukraineNews = [];
+        items.forEach(item => {
+          const title = item.querySelector('title')?.textContent || '';
+          const link = item.querySelector('link')?.textContent || '';
+          const description = item.querySelector('description')?.textContent || '';
 
-            items.forEach(item => {
-              const title = item.querySelector('title')?.textContent || '';
-              const link = item.querySelector('link')?.textContent || '';
-              const description = item.querySelector('description')?.textContent || '';
+          if (title.toLowerCase().includes('ukraine') || 
+              description.toLowerCase().includes('ukraine')) {
+            ukraineNews.push({ title, link });
+          }
+        });
 
-              if (title.toLowerCase().includes('ukraine') || 
-                  description.toLowerCase().includes('ukraine')) {
-                ukraineNews.push({ title, link });
-              }
-            });
+        newsList.innerHTML = '';
 
-            newsList.innerHTML = '';
+        if (ukraineNews.length === 0) {
+          newsList.innerHTML = '<li>No recent Ukraine news found at the moment.</li>';
+          return;
+        }
 
-            if (ukraineNews.length === 0) {
-              newsList.innerHTML = '<li>No recent Ukraine news found at the moment.</li>';
-              return;
-            }
-
-            ukraineNews.slice(0, 5).forEach(item => {
-              const li = document.createElement('li');
-              li.innerHTML = `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
-              newsList.appendChild(li);
-            });
-          })
-          .catch(() => {
-            newsList.innerHTML = '<li>Unable to load latest news right now.<br>Please try refreshing the page later.</li>';
-          });
-    </script>
+        ukraineNews.slice(0, 5).forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
+          newsList.appendChild(li);
+        });
+      })
+      .catch(() => {
+        newsList.innerHTML = '<li>Unable to load latest news right now.<br>Please try refreshing the page later.</li>';
+      });
+</script>
 
         <!-- Civilian Impact -->
         <section id="impact">
