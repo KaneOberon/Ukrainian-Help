@@ -175,6 +175,71 @@
             </div>
         </section>
 
+        <!-- AUTO-UPDATING NEWS SECTION -->
+        <section id="news">
+            <h2>Latest News from Reliable Sources</h2>
+            <div class="card">
+                <p><strong>Auto-updated</strong> from BBC News (filtered for Ukraine-related stories). Refreshes every time you visit.</p>
+                <ul id="news-list" class="news-list">
+                    <li>Loading latest news...</li>
+                </ul>
+                <p style="font-size:0.9em; color:#666; margin-top:20px;">
+                    Note: This pulls publicly available headlines. For deeper analysis, visit the <a href="https://understandingwar.org/" target="_blank">Institute for the Study of War</a>.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>This is an independent informational website • Last updated: April 2026</p>
+    </footer>
+
+    <!-- The JavaScript goes just before </body> -->
+    <script>
+        const newsList = document.getElementById('news-list');
+
+        fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://feeds.bbci.co.uk/news/world/europe/rss.xml')}`)
+          .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+          })
+          .then(data => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
+
+            let ukraineNews = [];
+
+            items.forEach(item => {
+              const title = item.querySelector('title')?.textContent || '';
+              const link = item.querySelector('link')?.textContent || '';
+              const description = item.querySelector('description')?.textContent || '';
+
+              if (title.toLowerCase().includes('ukraine') || 
+                  description.toLowerCase().includes('ukraine')) {
+                ukraineNews.push({ title, link });
+              }
+            });
+
+            newsList.innerHTML = '';
+
+            if (ukraineNews.length === 0) {
+              newsList.innerHTML = '<li>No recent Ukraine news found at the moment.</li>';
+              return;
+            }
+
+            ukraineNews.slice(0, 5).forEach(item => {
+              const li = document.createElement('li');
+              li.innerHTML = `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
+              newsList.appendChild(li);
+            });
+          })
+          .catch(() => {
+            newsList.innerHTML = '<li>Unable to load latest news right now.<br>Please try refreshing the page later.</li>';
+          });
+    </script>
+
         <!-- Civilian Impact -->
         <section id="impact">
             <h2>Impact on Civilians</h2>
