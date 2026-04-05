@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Ukraine | Understanding the War & How to Help</title>
+       <!-- Fonts + Enhanced Styling with Dark Mode -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --blue: #005BBB;
             --yellow: #FFD700;
+            --bg: #f9f9f9;
+            --text: #333;
+            --card: #ffffff;
+        }
+        
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --card: #1e1e1e;
         }
         
         body {
@@ -17,8 +27,9 @@
             margin: 0;
             padding: 0;
             line-height: 1.75;
-            color: #333;
-            background: #f9f9f9;
+            color: var(--text);
+            background: var(--bg);
+            transition: background 0.4s ease;
         }
         
         h1, h2, h3 {
@@ -51,64 +62,15 @@
         }
         
         .nav {
-            background: white;
+            background: var(--card);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         
-        .nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 18px 0;
-            margin: 0;
-            gap: 15px;
-        }
-        
-        .nav a {
-            color: var(--blue);
-            text-decoration: none;
-            padding: 12px 24px;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav a:hover {
-            background: var(--blue);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .hero-image {
-            width: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: transform 0.4s ease;
-        }
-        
-        .hero-image:hover {
-            transform: scale(1.03);
-        }
-        
-        .flag-image {
-            width: 100%;
-            max-width: 900px;
-            margin: 30px auto;
-            display: block;
-            border: 6px solid #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-        
         .card {
-            background: white;
+            background: var(--card);
             border-radius: 16px;
             padding: 35px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.08);
@@ -128,7 +90,6 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin: 10px 8px;
             transition: all 0.3s ease;
         }
         
@@ -137,38 +98,47 @@
             transform: scale(1.05);
         }
         
-        .news-list li {
-            margin: 14px 0;
+        /* Dark Mode Toggle Button */
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card);
+            color: var(--text);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.4em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 200;
+            transition: all 0.3s ease;
         }
         
-        .news-list a {
-            color: var(--blue);
-            text-decoration: none;
+        /* FAQ Styling */
+        .faq-question {
+            cursor: pointer;
+            font-weight: 600;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
         }
         
-        .news-list a:hover {
-            text-decoration: underline;
+        .faq-answer {
+            display: none;
+            padding: 10px 0 20px;
+            color: #555;
         }
         
-        footer {
-            background: #222;
-            color: #ddd;
-            text-align: center;
-            padding: 60px 20px;
-            font-size: 0.95em;
-        }
-        
-        .section-intro {
-            text-align: center;
-            font-size: 1.15em;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: #444;
+        [data-theme="dark"] .faq-answer {
+            color: #bbb;
         }
     </style>
 </head>
 <body>
 
+        <!-- Dark Mode Toggle -->
+    <button id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
     <!-- Navigation -->
     <nav class="nav">
         <ul>
@@ -381,13 +351,67 @@
         </section>
 
     </div>
-
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="card">
+                <div class="faq-item">
+                    <div class="faq-question">Why is the war still ongoing in 2026?</div>
+                    <div class="faq-answer">Russia continues its full-scale invasion that began in 2022. Despite significant resistance from Ukraine, the conflict has become a war of attrition with slow territorial changes and continued long-range strikes.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Where does the money donated actually go?</div>
+                    <div class="faq-answer">When you donate to verified organizations like UNITED24, Nova Ukraine, or Stand For Ukraine, the funds go toward medical aid, drones, demining, infrastructure repair, and humanitarian support. These organizations publish regular transparent reports.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is this website affiliated with any government?</div>
+                    <div class="faq-answer">No. This is an independent informational website created to raise awareness and direct people to verified aid organizations.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How often is the news section updated?</div>
+                    <div class="faq-answer">The auto-updated BBC headlines refresh every time you visit the page. The rest of the links are to the direct news articles.</div>
+                </div>
+            </div>
+        </section>
     <!-- Footer -->
     <footer>
         <p>This is an independent informational website. All content is based on publicly available sources.</p>
         <p>We do not represent any government or organization.</p>
         <p style="margin-top:20px;">Last updated: April 2026</p>
     </footer>
+    <script>
+        // Dark Mode Toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
 
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            toggleBtn.textContent = '☀️';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                toggleBtn.textContent = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                toggleBtn.textContent = '🌙';
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+    </script>
 </body>
 </html>
