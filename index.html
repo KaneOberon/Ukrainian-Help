@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Ukraine | Understanding the War & How to Help</title>
        <!-- Fonts + Enhanced Styling with Dark Mode -->
+      <!-- Fonts + Enhanced Styling with Dark Mode + Fixed Headings -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
@@ -35,6 +36,7 @@
         h1, h2, h3 {
             font-family: 'Playfair Display', Georgia, serif;
             font-weight: 700;
+            color: var(--blue) !important;   /* This forces the headings back to proper blue */
         }
         
         header {
@@ -69,6 +71,45 @@
             z-index: 100;
         }
         
+        .nav a {
+            color: var(--blue);
+            text-decoration: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover {
+            background: var(--blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.4s ease;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .flag-image {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            display: block;
+            border: 6px solid #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
         .card {
             background: var(--card);
             border-radius: 16px;
@@ -98,7 +139,7 @@
             transform: scale(1.05);
         }
         
-        /* Dark Mode Toggle Button */
+        /* Dark Mode Toggle */
         #theme-toggle {
             position: fixed;
             top: 20px;
@@ -113,25 +154,6 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 200;
-            transition: all 0.3s ease;
-        }
-        
-        /* FAQ Styling */
-        .faq-question {
-            cursor: pointer;
-            font-weight: 600;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .faq-answer {
-            display: none;
-            padding: 10px 0 20px;
-            color: #555;
-        }
-        
-        [data-theme="dark"] .faq-answer {
-            color: #bbb;
         }
     </style>
 </head>
