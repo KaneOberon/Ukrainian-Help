@@ -153,6 +153,41 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 200;
         }
+                /* ==================== FAQ STYLING WITH PROPER SPACING ==================== */
+        .faq-item {
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.12em;
+            color: var(--blue);
+            padding: 12px 0 8px 0;
+        }
+        
+        .faq-answer {
+            padding: 5px 0 20px 0;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Dark mode adjustments for FAQ */
+        [data-theme="dark"] .faq-item {
+            border-bottom: 1px solid #444;
+        }
+        
+        [data-theme="dark"] .faq-answer {
+            color: #bbb;
+        }
     </style>
 </head>
 <body>
@@ -432,41 +467,6 @@
                 toggleBtn.textContent = '🌙';
             }
         });
-        /* ==================== FAQ STYLING WITH PROPER SPACING ==================== */
-        .faq-item {
-            margin-bottom: 40px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .faq-question {
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1.12em;
-            color: var(--blue);
-            padding: 12px 0 8px 0;
-        }
-        
-        .faq-answer {
-            padding: 5px 0 20px 0;
-            color: #555;
-            line-height: 1.7;
-        }
-        
-        /* Dark mode adjustments for FAQ */
-        [data-theme="dark"] .faq-item {
-            border-bottom: 1px solid #444;
-        }
-        
-        [data-theme="dark"] .faq-answer {
-            color: #bbb;
-        }
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
