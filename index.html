@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,7 @@
             background: linear-gradient(135deg, var(--blue), #003d80);
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px 40px;
         }
         .flag-stripes {
             height: 8px;
@@ -77,6 +76,14 @@
             border-radius: 8px;
             margin: 20px 0;
         }
+        .flag-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            display: block;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+        }
         .card {
             background: white;
             border-radius: 8px;
@@ -96,10 +103,6 @@
         }
         .btn:hover {
             background: #003d80;
-        }
-        .yellow-btn {
-            background: var(--yellow);
-            color: #003d80;
         }
         footer {
             background: #222;
@@ -127,6 +130,13 @@
         </ul>
     </nav>
 
+    <!-- Ukrainian Flag at the top -->
+    <div class="container" style="text-align:center; padding-top:30px; padding-bottom:10px;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/1280px-Flag_of_Ukraine.svg.png" 
+             alt="Flag of Ukraine" 
+             class="flag-image">
+    </div>
+
     <!-- Header -->
     <header>
         <div class="flag-stripes"></div>
@@ -143,7 +153,12 @@
         <!-- Homepage Intro -->
         <section id="home">
             <h2 style="text-align:center; color:var(--blue);">Understanding the Ongoing War</h2>
-            <img src="https://picsum.photos/id/1015/1200/400" alt="Ukrainian sunflower field landscape" class="hero-image">
+            
+            <!-- Placeholder for Sunflower -->
+            <img src="images/sunflower.jpg" 
+                 alt="Ukrainian sunflower field" 
+                 class="hero-image">
+
             <p style="text-align:center; font-size:1.1em;">
                 This independent site shares publicly available facts about the war in Ukraine and directs support to transparent, verified organizations.
             </p>
@@ -154,9 +169,9 @@
             <h2>The Current Situation (as of April 2026)</h2>
             <div class="card">
                 <p>russia's illegal full-scale invasion of Ukraine began in February 2022 and continues into its fifth year. Russia currently occupies roughly 20% of Ukrainian territory.</p>
-                <p>Fighting remains active with slow Russian advances in some areas (particularly Donetsk region) and Ukrainian counteractions in others, including northern Kharkiv and southern directions. Both sides conduct long-range strikes: Russia launches hundreds of drones and missiles against Ukrainian cities and infrastructure, while Ukraine targets Russian military assets and energy facilities.</p>
-                <p>The situation evolves rapidly. Recent reports indicate continued drone and missile attacks on civilian areas, with significant humanitarian needs persisting.</p>
-                <p class="sources">Sources: Institute for the Study of War (ISW), UN reports, and other public assessments. Last updated: April 2026.</p>
+                <p>Fighting remains active with slow Russian advances in some areas (particularly Donetsk region) and Ukrainian counteractions in others. Both sides conduct long-range strikes on military and infrastructure targets.</p>
+                <p>The situation evolves rapidly. Continued humanitarian needs persist across the country.</p>
+                <p class="sources">Sources: Institute for the Study of War (ISW), UN reports. Last updated: April 2026.</p>
             </div>
         </section>
 
@@ -164,15 +179,8 @@
         <section id="impact">
             <h2>Impact on Civilians</h2>
             <div class="card">
-                <p>Over 10.8 million people in Ukraine require humanitarian assistance in 2026, including millions who are internally displaced or affected by ongoing attacks.</p>
-                <p>Key challenges include:</p>
-                <ul>
-                    <li>Frequent air alerts and strikes on energy infrastructure causing power outages and heating disruptions, especially in winter.</li>
-                    <li>Damage to homes, schools, and hospitals, affecting access to education and healthcare.</li>
-                    <li>Displacement: Tens of thousands newly displaced in recent months due to intensified fighting in frontline areas.</li>
-                    <li>Civilian casualties from long-range attacks and frontline hostilities.</li>
-                </ul>
-                <p>Humanitarian organizations continue to provide food, shelter, medical aid, and protection support to those most in need.</p>
+                <p>Millions of people in Ukraine require humanitarian assistance due to ongoing conflict, displacement, and damage to infrastructure.</p>
+                <p>Key challenges include frequent air alerts, power outages, damage to homes and essential services, and effects on families and children.</p>
                 <p class="sources">Based on UN OCHA and humanitarian reports (2026).</p>
             </div>
         </section>
@@ -181,31 +189,33 @@
         <section id="culture">
             <h2>Ukrainian Culture & Heritage</h2>
             <div class="card">
-                <p>Ukraine is known for its rich traditions, including vibrant folk art, literature, and music. Iconic symbols include the sunflower, embroidered vyshyvanka shirts, and traditional foods such as borscht and varenyky (dumplings).</p>
-                <p>The country has a deep history with diverse regional cultures, world-renowned writers, composers, and a strong commitment to freedom and identity.</p>
-                <p>This cultural heritage is an important part of what Ukrainians are defending.</p>
-                <!-- You can replace the image URL with a public domain sunflower or landscape photo -->
-                <img src="Ukraine Countryside" alt="Symbolic Ukrainian sunflower field" class="hero-image" style="max-height:300px;">
+                <p>Ukraine is known for its rich traditions, vibrant folk art, literature, music, and iconic symbols such as the sunflower and embroidered vyshyvanka.</p>
+                <p>Traditional foods like borscht and varenyky, along with a deep historical and cultural heritage, represent what Ukrainians are defending.</p>
+                
+                <!-- Placeholder for Ukraine Countryside -->
+                <img src="images/ukraine-countryside.jpg" 
+                     alt="Ukraine Countryside" 
+                     class="hero-image" 
+                     style="max-height:300px;">
             </div>
         </section>
 
         <!-- How to Help -->
         <section id="help">
             <h2>How to Help</h2>
-            <p style="font-size:1.1em;">The most effective way to support is by donating directly to verified, transparent organizations. Always use their official websites.</p>
+            <p style="font-size:1.1em;">The most effective way to support is by donating directly to verified, transparent organizations.</p>
             
             <div class="card">
                 <h3 style="color:var(--blue);">Recommended Verified Organizations</h3>
                 <ul>
-                    <li><strong>UNITED24</strong> – Official Ukrainian government platform for defense, medical aid, and rebuilding.<br>
+                    <li><strong>UNITED24</strong> – Official Ukrainian platform for defense, medical aid, and rebuilding.<br>
                         <a href="https://u24.gov.ua/" target="_blank" class="btn">Donate at u24.gov.ua</a></li>
-                    <li><strong>Nova Ukraine</strong> – Humanitarian aid, medical supplies, and support for millions affected.<br>
+                    <li><strong>Nova Ukraine</strong> – Humanitarian aid and medical supplies.<br>
                         <a href="https://novaukraine.org/" target="_blank" class="btn">Donate at novaukraine.org</a></li>
-                    <li><strong>Stand For Ukraine</strong> – Curated list of 40+ vetted charities for military and humanitarian needs.<br>
+                    <li><strong>Stand For Ukraine</strong> – Curated list of vetted charities.<br>
                         <a href="https://standforukraine.com/" target="_blank" class="btn">Browse at standforukraine.com</a></li>
-                    <li><strong>Razom for Ukraine</strong> – Medical aid and long-term recovery efforts.</li>
                 </ul>
-                <p><strong>Tip:</strong> Check Charity Navigator or similar evaluators for transparency ratings. Prefer organizations with low overhead and published reports. Avoid unverified individual campaigns.</p>
+                <p><strong>Tip:</strong> Always donate via official websites and check transparency ratings.</p>
             </div>
         </section>
 
@@ -214,10 +224,8 @@
             <h2>Resources & Further Reading</h2>
             <div class="card">
                 <ul>
-                    <li><a href="https://understandingwar.org/" target="_blank">Institute for the Study of War (ISW)</a> – Daily campaign assessments and maps.</li>
-                    <li><a href="https://www.unocha.org/ukraine" target="_blank">UN OCHA Ukraine</a> – Humanitarian situation reports.</li>
-                    <li>Reliable news: BBC, Reuters, and official Ukrainian government sources.</li>
-                    <li>Maps: DeepStateMap or ISW interactive maps.</li>
+                    <li><a href="https://understandingwar.org/" target="_blank">Institute for the Study of War (ISW)</a></li>
+                    <li><a href="https://www.unocha.org/ukraine" target="_blank">UN OCHA Ukraine</a></li>
                 </ul>
             </div>
         </section>
@@ -229,7 +237,7 @@
         <p>This is an independent informational website. All content is based on publicly available sources.</p>
         <p>We do not represent any government or organization.</p>
         <p style="margin-top:20px;">Last updated: April 2026</p>
-        <p class="sources">Images are placeholder (replace with public domain or Creative Commons photos from Pixabay, Unsplash, or Wikimedia Commons).</p>
+        <p class="sources">Replace the image placeholders in the <strong>images/</strong> folder with your own photos (sunflower.jpg and ukraine-countryside.jpg).</p>
     </footer>
 
 </body>
