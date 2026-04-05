@@ -371,33 +371,39 @@
         </section>
 
     </div>
-        <!-- FAQ Section -->
+                <!-- FAQ Section - Clean with good spacing -->
         <section id="faq">
             <h2>Frequently Asked Questions</h2>
             <div class="card">
+
                 <div class="faq-item">
                     <div class="faq-question">Why is the war still ongoing in 2026?</div>
-                    
-                    <div class="faq-answer">Russia continues its full-scale invasion that began in 2022. Despite significant resistance from Ukraine, the conflict has become a war of attrition with slow territorial changes and continued long-range strikes.</div>
+                    <div class="faq-answer">
+                        Russia continues its full-scale invasion that began in 2022. Despite significant resistance from Ukraine, the conflict has become a war of attrition with slow territorial changes and continued long-range strikes.
+                    </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">Where does the money donated actually go?</div>
-                    
-                    <div class="faq-answer">When you donate to verified organizations like UNITED24, Nova Ukraine, or Stand For Ukraine, the funds go toward medical aid, drones, demining, infrastructure repair, and humanitarian support. These organizations publish regular transparent reports.</div>
+                    <div class="faq-answer">
+                        When you donate to verified organizations like UNITED24, Nova Ukraine, or Stand For Ukraine, the funds go toward medical aid, drones, demining, infrastructure repair, and humanitarian support. These organizations publish regular transparent reports.
+                    </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">Is this website affiliated with any government?</div>
-                    
-                    <div class="faq-answer">No. This is an independent informational website created to raise awareness and direct people to verified aid organizations.</div>
+                    <div class="faq-answer">
+                        No. This is an independent informational website created to raise awareness and direct people to verified aid organizations.
+                    </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question">How often is the news section updated?</div>
-                    
-                    <div class="faq-answer">The auto-updated BBC headlines refresh every time you visit the page. The rest of the links are to the direct news articles.</div>
+                    <div class="faq-answer">
+                        The auto-updated BBC headlines refresh every time you visit the page. The rest of the links and information on the site are updated manually when needed.
+                    </div>
                 </div>
+
             </div>
         </section>
     <!-- Footer -->
@@ -426,7 +432,41 @@
                 toggleBtn.textContent = '🌙';
             }
         });
-
+        /* ==================== FAQ STYLING WITH PROPER SPACING ==================== */
+        .faq-item {
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.12em;
+            color: var(--blue);
+            padding: 12px 0 8px 0;
+        }
+        
+        .faq-answer {
+            padding: 5px 0 20px 0;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        /* Dark mode adjustments for FAQ */
+        [data-theme="dark"] .faq-item {
+            border-bottom: 1px solid #444;
+        }
+        
+        [data-theme="dark"] .faq-answer {
+            color: #bbb;
+        }
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
